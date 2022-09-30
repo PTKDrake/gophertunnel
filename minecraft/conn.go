@@ -820,6 +820,7 @@ func (conn *Conn) handleResourcePacksInfo(pk *packet.ResourcePacksInfo) error {
 			conn.packQueue.packAmount--
 			continue
 		}
+		conn.log.Printf("Pack %v, content-key: %v", pack.UUID+"_"+pack.Version, pack.ContentKey)
 		// This UUID_Version is a hack Mojang put in place.
 		packsToDownload = append(packsToDownload, pack.UUID+"_"+pack.Version)
 		conn.packQueue.downloadingPacks[pack.UUID] = downloadingPack{
@@ -835,6 +836,7 @@ func (conn *Conn) handleResourcePacksInfo(pk *packet.ResourcePacksInfo) error {
 			conn.packQueue.packAmount--
 			continue
 		}
+		conn.log.Printf("Pack %v, content-key: %v", pack.UUID+"_"+pack.Version, pack.ContentKey)
 		// This UUID_Version is a hack Mojang put in place.
 		packsToDownload = append(packsToDownload, pack.UUID+"_"+pack.Version)
 		conn.packQueue.downloadingPacks[pack.UUID] = downloadingPack{
